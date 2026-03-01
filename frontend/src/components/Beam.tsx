@@ -22,13 +22,13 @@ export interface StripeBeamCanvasProps {
 }
 
 export const DEFAULT_BEAMS: BeamConfig[] = [
-  { color1: "#ff9a3c", color2: "#ff6b35", baseY: 0.22, spread: 0.32, speed: 0.18, phase: 0,   opacity: 0.90 },
-  { color1: "#f72585", color2: "#b5179e", baseY: 0.40, spread: 0.35, speed: 0.14, phase: 2.1, opacity: 0.85 },
-  { color1: "#7209b7", color2: "#560bad", baseY: 0.58, spread: 0.30, speed: 0.16, phase: 4.2, opacity: 0.80 },
-  { color1: "#480ca8", color2: "#3a0ca3", baseY: 0.72, spread: 0.28, speed: 0.12, phase: 1.5, opacity: 0.75 },
-  { color1: "#4cc9f0", color2: "#4361ee", baseY: 0.85, spread: 0.25, speed: 0.15, phase: 3.3, opacity: 0.70 },
-  { color1: "#ffbe0b", color2: "#fb5607", baseY: 0.30, spread: 0.12, speed: 0.22, phase: 0.8, opacity: 0.50 },
-  { color1: "#ff006e", color2: "#8338ec", baseY: 0.50, spread: 0.10, speed: 0.20, phase: 5.0, opacity: 0.45 },
+  { color1: "#ff9a3c", color2: "#ff6b35", baseY: 0.22, spread: 0.32, speed: 0.18, phase: 0,   opacity: 0.90, startX: -1 },
+  { color1: "#f72585", color2: "#b5179e", baseY: 0.40, spread: 0.35, speed: 0.14, phase: 2.1, opacity: 0.85, startX: -1 },
+  { color1: "#7209b7", color2: "#560bad", baseY: 0.58, spread: 0.30, speed: 0.16, phase: 4.2, opacity: 0.80, startX: -1 },
+  { color1: "#480ca8", color2: "#3a0ca3", baseY: 0.72, spread: 0.28, speed: 0.12, phase: 1.5, opacity: 0.75, startX: -1 },
+  { color1: "#4cc9f0", color2: "#4361ee", baseY: 0.85, spread: 0.25, speed: 0.15, phase: 3.3, opacity: 0.70, startX: -1 },
+  { color1: "#ffbe0b", color2: "#fb5607", baseY: 0.30, spread: 0.12, speed: 0.22, phase: 0.8, opacity: 0.50, startX: -1 },
+  { color1: "#ff006e", color2: "#8338ec", baseY: 0.50, spread: 0.10, speed: 0.20, phase: 5.0, opacity: 0.45, startX: -1 },
 ];
 
 // Preset diagonal — igual à Stripe real (rotate + startX/endX)
