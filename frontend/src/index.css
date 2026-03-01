@@ -1,1 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-playfair: 'Playfair Display', serif;
+}
+
+@theme {
+  --font-sf: "SF Pro Display", sans-serif;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SF-Pro-Display-Light-subset.woff2') format('woff2');
+  font-weight: 300; /* Light */
+  font-style: normal;
+  font-display: swap; /* importante pra performance */
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SF-Pro-Display-Regular.woff2') format('woff2');
+  font-weight: 400; /* Light */
+  font-style: normal;
+  font-display: swap; /* importante pra performance */
+}

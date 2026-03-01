@@ -1,7 +1,9 @@
+import { StripeBeamCanvas } from "../components/Beam.tsx";
+
 export default function LoginPage() {
     return (
-        <div>
-            <h1 className="text-red-400">Login</h1>
-        </div>
+        <section className="relative overflow-hidden min-h-screen ">
+            <StripeBeamCanvas className="absolute top-0 right-0 w-full md:w-3/5 h-full" />
+        </section>
     )
 }   
