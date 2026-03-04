@@ -1,11 +1,19 @@
 import { useState } from "react";
 
-export default function Switch() {
+type SwitchProps = {
+    click: () => void;
+}
+
+export default function Switch({ click }: SwitchProps) {
     const [enabled, setEnabled] = useState(false);
 
     return (
         <button
-            onClick={() => setEnabled(!enabled)}
+            onClick={() => {
+                click();
+                setEnabled(!enabled);
+                console.log("clicked")
+            }}
             className={`relative inline-flex h-6 w-11 items-center rounded-full transition ${enabled ? "bg-green-500" : "bg-gray-300"
                 }`}
         >
