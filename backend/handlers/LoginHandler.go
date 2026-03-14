@@ -8,7 +8,10 @@ import (
 
 	"github.com/alohamat/system-lab/db"
 	"github.com/alohamat/system-lab/models"
+	"github.com/alohamat/system-lab/services"
 	"go.mongodb.org/mongo-driver/bson"
+
+	"golang.org/x/crypto/bcrypt"
 )
 
 type LoginRequest struct {
@@ -24,7 +27,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	var req LoginRequest
 	var user models.User
 	collection := db.DB.Collection("usersCollection")
-	
+
 	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
 		fmt.Printf("loginhandler error: %v", err)
@@ -40,4 +43,22 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, "Invalid credentials", http.StatusUnauthorized)
 	}
+
+	err = bcrypt.CompareHashAndPassword(
+		[]byte(user.Password),
+		[]byte(req.Password),
+	)
+
+	token, err := services.GenerateJWT(user.Username)
+	if err != nil {
+		http.Error(w, "Token error", http.StatusInternalServerError)
+		return
+	}
+
+	resp := LoginResponse{
+		Token: token,
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(resp)
 }
