@@ -14,19 +14,26 @@ export default function LoginPage() {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post("http://localhost:3000/login", {
+            if (!username || !password) {
+                throw Error("Missing credentials")
+            }
+            const response = await axios.post("http://localhost:8080/login", {
                 username,
                 password,
             });
             console.log(response.data);
         } catch (error) {
+            alert(error)
             console.error(error);
         }
     };
 
     const handleRegister = async () => {
         try {
-            const response = await axios.post("http://localhost:3000/register", {
+             if (!username || !password) {
+                throw Error("Missing credentials")
+            }
+            const response = await axios.post("http://localhost:8080/register", {
                 username,
                 password,
                 email,
@@ -34,6 +41,7 @@ export default function LoginPage() {
             });
             console.log(response.data);
         } catch (error) {
+            alert(error)
             console.error(error);
         }
     };
@@ -46,17 +54,17 @@ export default function LoginPage() {
                     <h1 className="text-4xl font-bold text-white">{isRegistering ? "Registre-se" : "Acesse sua conta"}</h1>
                     <GlassInput type="text" placeholder="Usuário" value={username} onChange={(e) => setUsername(e.target.value)} />
                     <GlassInput type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} />
-                {isRegistering && (
-                    <div className="flex flex-col w-full items-center space-y-4">
-                        <GlassInput type="password" placeholder="Confirmar Senha" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                        <GlassInput type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    {isRegistering && (
+                        <div className="flex flex-col w-full items-center space-y-4">
+                            <GlassInput type="password" placeholder="Confirmar Senha" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                            <GlassInput type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        </div>
+                    )}
+                    <button type="submit" onClick={isRegistering ? handleRegister : handleLogin} className="md:w-1/2 w-2/3 cursor-pointer px-4 py-3 my-4 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition duration-200 shadow-lg">Iniciar Sessão</button>
+                    <div className="flex items-center justify-center space-x-2">
+                        <p className="text-white">{isRegistering ? "Já tem uma conta?" : "Não tem uma conta?"}</p>
+                        <strong className="text-orange-600 underline cursor-pointer" onClick={() => setIsRegistering(!isRegistering)}>{isRegistering ? "Login" : "Registre-se"}</strong>
                     </div>
-                )}
-                <button type="submit" onClick={isRegistering ? handleRegister : handleLogin} className="md:w-1/2 w-2/3 cursor-pointer px-4 py-3 my-4 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition duration-200 shadow-lg">Iniciar Sessão</button>
-                <div className="flex items-center justify-center space-x-2">
-                    <p className="text-white">{isRegistering ? "Já tem uma conta?" : "Não tem uma conta?"}</p>
-                    <strong className="text-orange-600 underline cursor-pointer" onClick={() => setIsRegistering(!isRegistering)}>{isRegistering ? "Login" : "Registre-se"}</strong>
-                </div>
                 </div>
             </GlassDiv>
         </section>
