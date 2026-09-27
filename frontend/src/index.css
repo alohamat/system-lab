@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@font-face {
+    font-family: 'SF Pro Regular';
+    src: url('/fonts/SF-pro-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+.font-sf {
+    font-family: 'SF Pro Regular';
+}
